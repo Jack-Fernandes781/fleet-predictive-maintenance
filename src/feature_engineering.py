@@ -275,7 +275,7 @@ class FeatureEngineer:
 
         # Forward fill any remaining NaN values within each vehicle
         df = df.groupby('vehicle_id').apply(
-            lambda x: x.fillna(method='ffill').fillna(method='bfill')
+            lambda x: x.ffill().bfill()
         ).reset_index(drop=True)
 
         # Final fallback: fill with column median
